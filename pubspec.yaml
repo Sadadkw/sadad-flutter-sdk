@@ -1,0 +1,21 @@
+name: sadadpay_flutter
+description: Sadad Flutter SDK for facilitating integration with Sadad Payments REST APIs into your mobile app.
+version: 0.0.1
+homepage: https://github.com/Sadadkw/sadad-flutter-sdk
+
+environment:
+  sdk: '>=3.2.6 <4.0.0'
+  flutter: ">=1.17.0"
+
+dependencies:
+  dio: ^5.4.0
+  flutter:
+    sdk: flutter
+  webview_flutter: ^4.7.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
