@@ -22,9 +22,3 @@ Sadad SDK for facilitating integration with Sadad REST APIs into your mobile app
 - Get an Invoice by id
 - Provide a Web View for Payment Process
 
-## Installation
-
-## Usage
-
-## Additional information
-
