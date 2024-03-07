@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sadadpay_flutter/config/env.dart';
 import 'package:sadadpay_flutter/sadadpay.dart';
 import 'package:sadadpay_flutter/widgets/web_view.dart';
+
 void main() {
   runApp(const SadadDemo());
 }
@@ -56,10 +57,13 @@ class _MyHomePageState extends State<MyHomePage> {
   SadadPay sadadPay = SadadPay(env: Environment.dev);
 
   Future<void> initPaymentProcess() async {
-    await sadadPay.generateRefreshToken(clientKey: _clientKey, clientSecret: _clientSecret).then(
-        (value) => _refreshToken = value['response']['refreshToken']);
-    await sadadPay.generateAccessToken(refreshToken: _refreshToken).then(
-        (value) => _accessToken = value['response']['accessToken']);
+    await sadadPay
+        .generateRefreshToken(
+            clientKey: _clientKey, clientSecret: _clientSecret)
+        .then((value) => _refreshToken = value['response']['refreshToken']);
+    await sadadPay
+        .generateAccessToken(refreshToken: _refreshToken)
+        .then((value) => _accessToken = value['response']['accessToken']);
     await sadadPay.createInvoice(invoices: invoices, token: _accessToken).then(
         (value) => setState(() => _invoiceId = value['response']['invoiceId']));
     await sadadPay.getInvoice(invoiceId: _invoiceId, token: _accessToken).then(
