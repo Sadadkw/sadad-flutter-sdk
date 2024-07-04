@@ -54,7 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
     ]
   };
 
-  SadadPay sadadPay = SadadPay(env: Environment.dev);
+  SadadPay sadadPay = SadadPay(env: Environment.stage);
 
   Future<void> initPaymentProcess() async {
     await sadadPay
