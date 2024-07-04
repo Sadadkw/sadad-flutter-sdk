@@ -18,7 +18,7 @@ void setEnv({Environment? env}) {
   switch (env) {
     case Environment.prod:
       _config = {
-        _baseUrl: "https://sadadpay.net",
+        _baseUrl: "https://api.sadadpay.net/api",
         _clientKey: clientKey,
         _clientSecret: clientSecret
       };
