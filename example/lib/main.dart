@@ -37,7 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
   late String _refreshToken;
   late String _accessToken;
   late String _invoiceId;
-  late String _invoiceKey = "";
+  late String _invoiceUrl = "";
   final invoices = {
     "Invoices": [
       {
@@ -67,7 +67,7 @@ class _MyHomePageState extends State<MyHomePage> {
     await sadadPay.createInvoice(invoices: invoices, token: _accessToken).then(
         (value) => setState(() => _invoiceId = value['response']['invoiceId']));
     await sadadPay.getInvoice(invoiceId: _invoiceId, token: _accessToken).then(
-        (value) => setState(() => _invoiceKey = value['response']['key']));
+        (value) => setState(() => _invoiceUrl = value['response']['url']));
   }
 
   @override
@@ -78,9 +78,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    if (_invoiceKey != '') {
+    if (_invoiceUrl != '') {
       return SadadWebView(
-        invoiceKey: _invoiceKey,
+        url: _invoiceUrl,
         onSuccess: () {
           Navigator.push(
             context,
