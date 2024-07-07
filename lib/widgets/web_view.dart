@@ -3,13 +3,13 @@ import 'package:sadadpay_flutter/service/payment_status.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class SadadWebView extends StatefulWidget {
-  final String invoiceKey;
+  final String url;
   final AppBar? appBar;
   final Function onSuccess;
   final Function onFail;
 
   const SadadWebView(
-      {required this.invoiceKey,
+      {required this.url,
       required this.onSuccess,
       required this.onFail,
       this.appBar,
@@ -20,13 +20,13 @@ class SadadWebView extends StatefulWidget {
 
 class _SadadWebViewState extends State<SadadWebView> {
   var loadingPercentage = 0;
-  late String _invoiceKey;
+  late String _invoiceUrl;
   late WebViewController controller;
 
   @override
   void initState() {
     super.initState();
-    _invoiceKey = widget.invoiceKey;
+    _invoiceUrl = widget.url;
     bool pause = false;
     bool success = false;
     controller = WebViewController()
@@ -71,7 +71,7 @@ class _SadadWebViewState extends State<SadadWebView> {
         ),
       )
       ..loadRequest(
-        Uri.parse("https://sandbox.sadadpay.net/pay/$_invoiceKey"),
+        Uri.parse(_invoiceUrl),
       );
   }
 
